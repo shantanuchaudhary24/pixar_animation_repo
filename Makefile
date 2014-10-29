@@ -1,16 +1,16 @@
 CXX=g++
 EXE=bin/run
-FILES= src/main.cpp
+FILES= src/lamp.cpp src/matrix.cpp src/scene.cpp src/main.cpp
 COMPILE=-c
 LINK=-o
-OBJECTS= obj/main.o
+OBJECTS= obj/lamp.o obj/matrix.o obj/scene.o obj/main.o
 OBJDIR= obj/
 LIBS= -lGL -lGLU -lglut -lm
 DISABLE_WARNING=-w
 DEBUG= -g
 DIR=~/repositories/pixar_animation
 CONFIG_DIR=config/
-
+CONFIG_FILE=config.cfg
 all: build
 
 build:

@@ -5,8 +5,12 @@
  *      Author: shantanu
  */
 
-//#define DEBUG_DIFFUSE 1
-//#define DEBUG_SPECULAR 1
-//#define DEBUG_AMBIENT 1
 
+
+#define WINDOW_WIDTH 1280
+#define WINDOWS_HEIGHT 720
+#define BASE_RADIUS 5
 #define DEBUG(a) std::cout << #a  << '\n'
+
+static int screen_width = 500 ;
+static int screen_height = 500 ;

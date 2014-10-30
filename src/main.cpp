@@ -1,13 +1,4 @@
 
-//#include <iostream>
-//#include <stdlib.h>
-//#include <stdio.h>
-//#include <math.h>
-//#include <string.h>
-//#include <assert.h>
-//#include <GL/glut.h>
-//#include <GL/glu.h>
-
 #include "../include/headers.h"
 #include "../include/matrix.h"
 #include "../include/lamp.h"
@@ -85,30 +76,15 @@ void handleKeypress(unsigned char key, int x, int y ) {
 			
 	//x and y are the current mouse coordinates
 	switch (key) {
-		case 27:{ //escape key
+
+		case 27: //escape key
 			exit(0); //exit the program
 			break;
-			}
-		case 'm':
-		case 'M':
-//			glutIdleFunc(punch);
+
+		case 'a':
+			rotateball=true;
+			glutIdleFunc(animation);
 			break;
-		case 'n':
-		case 'N':
-//			glutIdleFunc(punch2);
-			break;	
-		case 'L':
-		case 'l':
-			
-//			right_boxer.setSelLeft(1);
-			printf(" true \n");
-			break;
-		case 'R':
-		case 'r':
-			//selectLeft=0;
-//			right_boxer.setSelLeft(0);
-			break;
-		
 		}
 	return  ;
 }
@@ -161,9 +137,7 @@ void drawScene(){
 
 	glColor3f(0.4,0.4,0.4);
 
-//	right_boxer.drawboxer();
-//	left_boxer.drawboxer();
-    lamp1.drawlamp();
+	lamp1.drawlamp();
 
 	glPopMatrix();
 	glutSwapBuffers();
@@ -172,16 +146,13 @@ void drawScene(){
 
 int main(int argc, char** argv){
 
-//	right_boxer.set(true) ;
-//	left_boxer.set(false) ;
-
 	glutInit(&argc, argv);
 
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 
 	glutInitWindowSize(WINDOW_WIDTH,WINDOWS_HEIGHT);
 	glutInitWindowPosition(WINDOW_WIDTH/4,WINDOWS_HEIGHT/4);
-	glutCreateWindow("Boxers");
+	glutCreateWindow("Pixar Animation");
 
 	initRendering();
 
@@ -191,10 +162,6 @@ int main(int argc, char** argv){
 
 	glutKeyboardFunc(handleKeypress);
     
-    //glutMouseFunc(handleMouse);
-
-    //glutMotionFunc(NULL);
-
 	glutReshapeFunc(handleResize);
 
 	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

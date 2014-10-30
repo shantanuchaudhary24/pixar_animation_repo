@@ -29,6 +29,9 @@ gdb:
 debug:	gdb
 	gdb $(DIR)$(EXE)
 
+push:
+	git push -u origin master
+
 cscope:
 	cscope -R -b
 

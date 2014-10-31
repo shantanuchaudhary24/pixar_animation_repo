@@ -2,6 +2,7 @@
 #include "../include/headers.h"
 #include "../include/matrix.h"
 #include "../include/lamp.h"
+#include "../include/ball.h"
 #include "../include/macros.h"
 
 using namespace std;
@@ -21,6 +22,7 @@ float factor = 1.0f;
 
 //declare the components
 lamp lamp1;
+ball ball1;
 
 void initRendering(){
 	glEnable(GL_ALPHA_TEST);
@@ -82,8 +84,9 @@ void handleKeypress(unsigned char key, int x, int y ) {
 			break;
 
 		case 'a':
-			rotateball=true;
-			glutIdleFunc(animation);
+//			rotateball=true;
+			ball1.set_rotate(true);
+			glutIdleFunc(animate_ball);
 			break;
 		}
 	return  ;
@@ -138,6 +141,7 @@ void drawScene(){
 	glColor3f(0.4,0.4,0.4);
 
 	lamp1.drawlamp();
+	ball1.drawball();
 
 	glPopMatrix();
 	glutSwapBuffers();

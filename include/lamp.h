@@ -12,8 +12,7 @@
 #include "../include/matrix.h"
 
 static float lampMovement[6]={0,0,0,0,0,0};    //{ }
-static float moveball=0;
-static bool rotateball=false;
+//static bool rotateball=false;
 
 void animation();
 class lamp

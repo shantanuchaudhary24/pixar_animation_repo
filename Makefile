@@ -1,9 +1,9 @@
 CXX=g++
 EXE=bin/run
-FILES= src/lamp.cpp src/matrix.cpp src/scene.cpp src/main.cpp
+FILES= src/ball.cpp src/lamp.cpp src/matrix.cpp src/scene.cpp src/main.cpp
 COMPILE=-c
 LINK=-o
-OBJECTS= obj/lamp.o obj/matrix.o obj/scene.o obj/main.o
+OBJECTS= obj/ball.o obj/lamp.o obj/matrix.o obj/scene.o obj/main.o
 OBJDIR= obj/
 LIBS= -lGL -lGLU -lglut -lm
 DISABLE_WARNING=-w

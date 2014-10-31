@@ -17,9 +17,21 @@ static float lampMovement[6]={0,0,0,0,0,0};    //{ }
 void animation();
 class lamp
 {
-	public:
+private:
+	float translateX;
+	float translateY;
+	float translateZ;
+	float rotationX;
+	float rotationY;
+	float rotationZ;
+
+public:
 	lamp();
 	void drawlamp();
+	float returnX();
+	float returnY();
+	float returnZ();
+	void translate_lamp(float x, float y, float z);
 };
 
 #endif /* LAMP_H_ */

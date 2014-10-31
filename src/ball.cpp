@@ -31,7 +31,7 @@ void ball::set_rotate(bool x)
 	rotateBall = x;
 }
 
-
+/* Code for ball animation*/
 void animate_ball()
 {
 	if(moveball<60){

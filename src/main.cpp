@@ -2,6 +2,7 @@
 #include "../include/headers.h"
 #include "../include/matrix.h"
 #include "../include/lamp.h"
+#include "../include/plane.h"
 #include "../include/ball.h"
 #include "../include/macros.h"
 
@@ -21,6 +22,7 @@ float angle_y = 0.0f;
 float factor = 1.0f;
 
 //declare the components
+plane floor1;
 lamp lamp1;
 ball ball1;
 
@@ -78,13 +80,15 @@ void handleKeypress(unsigned char key, int x, int y ) {
 			
 	//x and y are the current mouse coordinates
 	switch (key) {
-
+		float x,y,z;
 		case 27: //escape key
 			exit(0); //exit the program
 			break;
 
 		case 'a':
 //			rotateball=true;
+			x = lamp1.returnX()+0.5; y = lamp1.returnY()+0.5; z = lamp1.returnZ()+0.5;
+			lamp1.translate_lamp(x,y,z);
 			ball1.set_rotate(true);
 			glutIdleFunc(animate_ball);
 			break;
@@ -139,7 +143,7 @@ void drawScene(){
 	glRotatef(angle_y, 0.0f, 1.0f, 0.0f);
 
 	glColor3f(0.4,0.4,0.4);
-
+	floor1.drawplane();
 	lamp1.drawlamp();
 	ball1.drawball();
 

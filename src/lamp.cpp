@@ -61,24 +61,10 @@ void lamp::drawlamp()
 			gluCylinder(quad, 8, 1, 10.0,100,100);
 			glPopMatrix();
 
-			// Support sphere
-//			glPushMatrix();
-//			myTranslatef(80-moveball,-13.0,0.0);
-//			if(rotateball)
-//				myRotatef(1,0,0,1);
-//			glutSolidSphere(7.0,30.0,30.0);
-//			glPopMatrix();
 
 		glPopMatrix();
 }
 
+/* Code for lamp animation*/
 void animation(){
-//	if(moveball<60){
-//		moveball+=(moveball/50+0.2);
-//	}
-//	if(moveball>=60){
-//		rotateball=false;
-//
-//	}
-//	glutPostRedisplay();
 }

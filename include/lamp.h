@@ -24,6 +24,9 @@ private:
 	float rotationX;
 	float rotationY;
 	float rotationZ;
+	float rotationX_head;
+	float rotationY_head;
+	float rotationZ_head;
 
 public:
 	lamp();

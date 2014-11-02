@@ -16,12 +16,15 @@ lamp::lamp()
 	rotationX = 0;
 	rotationY = 0;
 	rotationZ = 0;
+	rotationX_head = 0;
+	rotationY_head = 0;
+	rotationZ_head = 0;
 }
 
 void lamp::translate_lamp(float x, float y, float z)
 {
 	translateX = x;
-	translateY = 0;
+	translateY = 0;	// move in X-Z plane only
 	translateZ = z;
 }
 

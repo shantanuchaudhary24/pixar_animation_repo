@@ -154,11 +154,6 @@ void drawScene(){
 
 int main(int argc, char** argv){
 
-	/* Call to default constructors*/
-	floor1 = new plane();
-	lamp1 = new lamp();
-	ball1 = new ball();
-
 	glutInit(&argc, argv);
 
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);

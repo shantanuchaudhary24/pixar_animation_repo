@@ -9,13 +9,19 @@
 #define FLOOR_H_
 #include "../include/headers.h"
 #include "../include/matrix.h"
+#include "../include/ctexture.h"
 
 
 class plane
 {
-	public:
+private:
+	ctexture planeTex;
+	GLuint texCode ;
+
+public:
 	plane();
-	void drawplane();
+	void drawplane(const char *filename);
+	void load_texture();
 };
 
 #endif /* FLOOR_H_ */

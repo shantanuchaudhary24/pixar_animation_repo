@@ -143,7 +143,7 @@ void drawScene(){
 	glRotatef(angle_y, 0.0f, 1.0f, 0.0f);
 
 	glColor3f(0.4,0.4,0.4);
-	floor1.drawplane();
+	floor1.drawplane("/home/shantanu/repositories/pixar_animation_repo/textures/plank01.bmp");
 	lamp1.drawlamp();
 	ball1.drawball();
 

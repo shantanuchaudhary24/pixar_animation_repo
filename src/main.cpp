@@ -34,8 +34,8 @@ void initRendering()
 	glEnable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
 
-//    glEnable(GL_LIGHT0);
-//    glEnable(GL_LIGHT1);
+    glEnable(GL_LIGHT0);
+    glEnable(GL_LIGHT1);
 	glEnable(GL_NORMALIZE);
 	glEnable(GL_COLOR_MATERIAL);
 	glEnable(GL_LIGHTING);
@@ -56,7 +56,7 @@ void initRendering()
 
 	glClearColor(0.7f, 0.9f, 1.0f, 1.0f);
 
-//	floor1.LoadTexture("textures/texture2.bmp");
+	floor1.LoadTexture("textures/plank01.bmp");
 
 }
 

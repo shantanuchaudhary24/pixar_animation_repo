@@ -26,6 +26,7 @@ include		: library headers for the corresponding src code files
 
 bin		: contains the build binary file (Not under version tracker)
 
+textures    : contains texture files
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Format of Configuration File:

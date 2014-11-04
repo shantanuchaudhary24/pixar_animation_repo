@@ -11,22 +11,14 @@
 #include "../include/headers.h"
 #include "../include/matrix.h"
 
-static float moveball=0;
-static bool rotation_flag = false;
-void animate_ball();
 class ball
 {
-
-	private:
-	bool rotateBall;
-
 	public:
+	float moveball;
+	struct timeval startTime, currentTime;
 	ball();
 	void drawball();
-	void set_rotate(bool x);
-
+	void animation();
 };
-
-
 
 #endif /* BALL_H_ */

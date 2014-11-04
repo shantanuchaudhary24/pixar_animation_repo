@@ -8,84 +8,80 @@
 #include "../include/headers.h"
 #include "../include/lamp.h"
 #include "../include/macros.h"
+
 lamp::lamp()
 {
-	translateX = 0;
-	translateY = 0;
-	translateZ = 0;
-	rotationX = 0;
-	rotationY = 0;
-	rotationZ = 0;
-	rotationX_head = 0;
-	rotationY_head = 0;
-	rotationZ_head = 0;
-}
-
-void lamp::translate_lamp(float x, float y, float z)
-{
-	translateX = x;
-	translateY = 0;	// move in X-Z plane only
-	translateZ = z;
+	baseTranslate[0] = baseTranslate[1] = baseTranslate[2] = 0;
+	baseRotate[0] = baseRotate[1] = baseRotate[2] = 0;
+	support1Rotate = 0;
+	support2Rotate = 0;
+	faceRotate[0] = faceRotate[1] = faceRotate[2] = 0;
+	gettimeofday(&startTime, NULL);
 }
 
 void lamp::drawlamp()
 {
 
-	GLUquadric *quad=gluNewQuadric();
+	GLUquadric *quad = gluNewQuadric();
 
-		glPushMatrix();
+	glPushMatrix();
 
-			glColor3f(0.6,0,0);
-			//base plate
-			glPushMatrix();
-			myTranslatef(0.0 + translateX,-20.0 + translateY,0.0 + translateZ);
-			myRotatef(-90,1,0,0);
-			glutSolidCone(10,5,100,100);
-			//gluDisk(quad, 2.0, 7.0, 100, 100 );
-			glPopMatrix();
+	glColor3f(0.6, 0, 0);
 
-			//base support
-			glPushMatrix();
-			myTranslatef(0.0 + translateX ,-2.0 + translateY ,0.0 + translateZ);
-			myRotatef(90.0f,1.0f,0.0f,0.0f);
-			gluCylinder(quad, 1, 1, 15.0,100,100);
-			glPopMatrix();
+	//base plate
+	myTranslatef(0.0, -20.0, 0.0);
+	myRotatef(-90, 1, 0, 0);
+	myTranslatef(baseTranslate[0], baseTranslate[1], baseTranslate[2]);
+	myRotatef(baseRotate[0], 1, 0, 0);
+	myRotatef(baseRotate[1], 0, 1, 0);
+	myRotatef(baseRotate[2], 0, 0, 1);
+	glutSolidCone(10, 5, 100, 100);
 
-			//upper support
-			glPushMatrix();
-			myTranslatef(10.0 + translateX ,8.0 + translateY ,0.0 + translateZ);
-			myRotatef(-45.0f,0.0f,0.0f,1.0f);
-			myRotatef(90.0f,1.0f,0.0f,0.0f);
-			gluCylinder(quad, 1, 1, 15.0,100,100);
-			glPopMatrix();
+	//base support
+	myTranslatef(0, 0, 4);
+	myRotatef(support1Rotate, 0, 1, 0);
+	gluCylinder(quad, 1, 1, 15.0, 100, 100);
 
-			//face
-			glPushMatrix();
-			myTranslatef(16.3 + translateX ,1.0 + translateY ,0.0 + translateZ);
-			myRotatef(-135.0f,0.0f,0.0f,1.0f);
-			myRotatef(90.0f,1.0f,0.0f,0.0f);
-			gluCylinder(quad, 8, 1, 10.0,100,100);
-			glPopMatrix();
+	//upper support
+	myTranslatef(0, 0, 14);
+	myRotatef(45.0f, 0.0f, 1.0f, 0.0f);
+	myRotatef(support1Rotate, 0, 1, 0);
+	gluCylinder(quad, 1, 1, 15.0, 100, 100);
 
-		glPopMatrix();
-}
+	//face
+	myTranslatef(10, 0, 14);
+	myRotatef(-90.0f, 0.0f, 1.0f, 0.0f);
+	myTranslatef(0, 0, 10);
+	myRotatef(-faceRotate[0], 1, 0, 0);
+	myRotatef(-faceRotate[1], 0, 1, 0);
+	myRotatef(-faceRotate[2], 0, 0, 1);
+	myTranslatef(0, 0, -10);
+	gluCylinder(quad, 8, 1, 10.0, 100, 100);
 
-float lamp::returnX()
-{
-	return translateX;
-}
-
-float lamp::returnY()
-{
-	return translateY;
-}
-
-float lamp::returnZ()
-{
-	return translateZ;
+	glPopMatrix();
 }
 
 /* Code for lamp animation*/
-void animation(){
+void lamp::animation()
+{
+
+	gettimeofday(&currentTime, NULL);
+	float total_time_spent = ((float) (currentTime.tv_usec - startTime.tv_usec))
+			/ 1000000 + (float) (currentTime.tv_sec - startTime.tv_sec);
+
+	if (total_time_spent < 2.0f)
+		faceRotate[0] += 1.5;
+	if (total_time_spent > 2.0f && total_time_spent < 4.0f)
+		faceRotate[0] -= 1.5;
+	if (total_time_spent > 4.0f && total_time_spent < 6.0f)
+		support1Rotate += 0.5;
+	if (total_time_spent > 6.0f && total_time_spent < 7.0f)
+		faceRotate[1] -= 1.5;
+	if (total_time_spent > 7.0f && total_time_spent < 9.0f)
+		faceRotate[1] += 1.5;
+	if (total_time_spent > 9.0f && total_time_spent < 10.0f)
+		faceRotate[1] -= 1.5;
+	if (total_time_spent > 10.0f && total_time_spent < 12.0f)
+		support1Rotate -= 0.5;
 
 }

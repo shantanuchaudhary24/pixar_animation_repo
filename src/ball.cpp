@@ -9,36 +9,25 @@
 #include "../include/ball.h"
 #include "../include/macros.h"
 
-
-
 ball::ball()
 {
-	rotateBall = rotation_flag;
+	moveball=0;
+	gettimeofday(&startTime, NULL);
 }
 
 void ball::drawball()
 {
 	glPushMatrix();
-	myTranslatef(80-moveball,-13.0,0.0);
-	if(rotateBall)
-		myRotatef(1,0,0,1);
+	myTranslatef(30+moveball,-13.0,0.0);
 	glutSolidSphere(7.0,30.0,30.0);
 	glPopMatrix();
 }
 
-void ball::set_rotate(bool x)
-{
-	rotateBall = x;
-}
+void ball::animation(){
+	gettimeofday(&currentTime, NULL);
+	float total_time_spent = ((float)(currentTime.tv_usec-startTime.tv_usec)) / 1000000 +  (float)(currentTime.tv_sec-startTime.tv_sec);
 
-/* Code for ball animation*/
-void animate_ball()
-{
-	if(moveball<60){
-		moveball+=(moveball/50+0.2);
-	}
-	if(moveball>=60){
-		rotation_flag=false;
-	}
-	glutPostRedisplay();
+	if(total_time_spent>8.0f && total_time_spent<12.0f)
+		moveball+=0.5;
+
 }

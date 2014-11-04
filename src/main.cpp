@@ -8,14 +8,6 @@
 
 using namespace std;
 
-
-const GLfloat light_ambient[]  = { 0.0f, 0.0f, 0.0f, 1.0f };
-const GLfloat light_diffuse[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
-const GLfloat light_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-const GLfloat light_position[] = { 20.0f, 50.0f, 50.0f, 0.0f };
-const GLfloat light_position2[] = { -20.0f, -50.0f, -50.0f, 0.0f };
-
-
 //This header file contains the variables used in the main file//
 float angle_x = 0.0f;
 float angle_y = 0.0f;
@@ -27,6 +19,12 @@ lamp lamp1;
 ball ball1;
 
 void initRendering(){
+	const GLfloat light_ambient[]  = { 0.0f, 0.0f, 0.0f, 1.0f };
+	const GLfloat light_diffuse[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
+	const GLfloat light_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	const GLfloat light_position[] = { 20.0f, 50.0f, 50.0f, 0.0f };
+	const GLfloat light_position2[] = { -20.0f, -50.0f, -50.0f, 0.0f };
+
 	glEnable(GL_ALPHA_TEST);
 	glEnable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
@@ -84,14 +82,6 @@ void handleKeypress(unsigned char key, int x, int y ) {
 		case 27: //escape key
 			exit(0); //exit the program
 			break;
-
-		case 'a':
-//			rotateball=true;
-			x = lamp1.returnX()+0.5; y = lamp1.returnY()+0.5; z = lamp1.returnZ()+0.5;
-			lamp1.translate_lamp(x,y,z);
-			ball1.set_rotate(true);
-			glutIdleFunc(animate_ball);
-			break;
 		}
 	return  ;
 }
@@ -102,55 +92,48 @@ void handleKeypressSpecial(int key, int x, int y ) {
 	switch (key) {
 		case GLUT_KEY_UP:{
 			angle_x += 2.0f;
-			glutPostRedisplay();
 			break;
 		}
 		case GLUT_KEY_DOWN:{
 			angle_x -= 2.0f;
-			glutPostRedisplay();
 			break;
 		}
 		case GLUT_KEY_LEFT:{
 			angle_y += 2.0f;
-			glutPostRedisplay();
 			break;
 		}
 		case GLUT_KEY_RIGHT:{
 			angle_y -= 2.0f;
-			glutPostRedisplay();
 			break;
 		}
-
 	}
 }
 
 void drawScene(){
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	glMatrixMode(GL_MODELVIEW);
-
 	glLoadIdentity();
-
 	glPushMatrix();
-
-	//myScalef(0.1,0.1,0.1);
- 
 	myTranslatef(0,0,-100);
-
 	glRotatef(angle_x, 1.0f, 0.0f, 0.0f);
-
 	glRotatef(angle_y, 0.0f, 1.0f, 0.0f);
-
-	glColor3f(0.4,0.4,0.4);
+//	glColor3f(0.4,0.4,0.4);
 	floor1.drawplane("/home/shantanu/repositories/pixar_animation_repo/textures/plank01.bmp");
 	lamp1.drawlamp();
+	lamp1.animation();
 	ball1.drawball();
-
+	ball1.animation();
 	glPopMatrix();
+	glEnd();
 	glutSwapBuffers();
 }
 
+void Timer(int iUnused)
+{
+    glutPostRedisplay();
+    glutTimerFunc(30, Timer, 0);
+}
 
 int main(int argc, char** argv){
 
@@ -173,7 +156,7 @@ int main(int argc, char** argv){
 	glutReshapeFunc(handleResize);
 
 	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
+	Timer(0);
 	glutMainLoop();
 
 	return 0;

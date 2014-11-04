@@ -11,30 +11,20 @@
 #include "../include/headers.h"
 #include "../include/matrix.h"
 
-static float lampMovement[6]={0,0,0,0,0,0};    //{ }
-//static bool rotateball=false;
 
-void animation();
 class lamp
 {
-private:
-	float translateX;
-	float translateY;
-	float translateZ;
-	float rotationX;
-	float rotationY;
-	float rotationZ;
-	float rotationX_head;
-	float rotationY_head;
-	float rotationZ_head;
 
 public:
+	struct timeval startTime, currentTime;
+	float baseTranslate[3];
+	float baseRotate[3];
+	float support1Rotate;
+	float support2Rotate;
+	float faceRotate[3];
 	lamp();
 	void drawlamp();
-	float returnX();
-	float returnY();
-	float returnZ();
-	void translate_lamp(float x, float y, float z);
+	void animation();
 };
 
 #endif /* LAMP_H_ */

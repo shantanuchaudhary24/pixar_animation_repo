@@ -104,6 +104,7 @@ void handleKeypressSpecial(int key, int x, int y ) {
 		}
 		case GLUT_KEY_RIGHT:{
 			angle_y -= 2.0f;
+//				glEnable(GL_LIGHT2);
 			break;
 		}
 	}

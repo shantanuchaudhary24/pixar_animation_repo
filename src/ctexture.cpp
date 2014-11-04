@@ -119,7 +119,7 @@ bool ctexture::load_texture(const char *filename)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
-	glTexImage2D(GL_TEXTURE_2D, 0, 3, image1->width, image1->height, 0,
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image1->width, image1->height, 0,
 	GL_RGB, GL_UNSIGNED_BYTE, image1->data);
 
 	return 1;

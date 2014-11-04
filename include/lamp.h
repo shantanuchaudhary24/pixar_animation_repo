@@ -14,7 +14,6 @@
 
 class lamp
 {
-
 public:
 	struct timeval startTime, currentTime;
 	float baseTranslate[3];

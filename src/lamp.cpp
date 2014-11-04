@@ -19,35 +19,43 @@ lamp::lamp()
 	gettimeofday(&startTime, NULL);
 }
 
+void lamp::init_lamp_light()
+{
+
+	GLfloat light_ambient[] =
+	{ 0.0, 0.0, 0.0, 1.0 };
+	GLfloat light_diffuse[] =
+	{ 1.0, 1.0, 1.0, 1.0 };
+	GLfloat light_specular[] =
+	{ 1.0, 1.0, 1.0, 1.0 };
+
+	GLfloat light_position[] =
+	{ 0, 0, 0, 1.0f };
+
+	GLfloat spotlight_direction[] =
+	{ 0, 0, -1 };
+
+	glLightfv(GL_LIGHT2, GL_AMBIENT, light_ambient);
+	glLightfv(GL_LIGHT2, GL_DIFFUSE, light_diffuse);
+	glLightfv(GL_LIGHT2, GL_SPECULAR, light_specular);
+	glLightfv(GL_LIGHT2, GL_POSITION, light_position);
+	glLightf(GL_LIGHT2, GL_SPOT_CUTOFF, 35.0);
+	glLightf(GL_LIGHT2, GL_SPOT_EXPONENT, 1.0);
+	glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, spotlight_direction);
+	glEnable(GL_LIGHT2);
+}
+
 void lamp::drawlamp()
 {
 
 	GLUquadric *quad = gluNewQuadric();
 
+
 	glPushMatrix();
-	GLfloat light_ambient[] =
-	{ 0.0, 0.0, 1.0, 1.0 };
-	GLfloat light_diffuse[] =
-	{ 1.0, 0.0, 0.0, 1.0 };
-	GLfloat light_specular[] =
-	{ 1.0, 1.0, 1.0, 1.0 };
-
-	GLfloat light_position[] = {0, 10, -10};
-
-	GLfloat spotlight_position[] = {0,-1,0,1};
-
-	glLightfv(GL_LIGHT2, GL_AMBIENT, light_ambient);
-	glLightfv(GL_LIGHT2, GL_DIFFUSE, light_diffuse);
-	glLightfv(GL_LIGHT2, GL_SPECULAR, light_specular);
-
-	glLightf(GL_LIGHT2, GL_SPOT_CUTOFF, 60.0);
-	glLightf(GL_LIGHT2, GL_SPOT_EXPONENT, 1.0);
-	glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, spotlight_position);
-	glLightfv(GL_LIGHT2, GL_POSITION, light_position);
 
 //	glEnable(GL_LIGHT2);
 	glColor3f(0.6, 0, 0);
-
+//	init_lamp_light();
 	//base plate
 	myTranslatef(0.0, -20.0, 0.0);
 	myRotatef(-90, 1, 0, 0);
@@ -77,7 +85,7 @@ void lamp::drawlamp()
 	myRotatef(-faceRotate[2], 0, 0, 1);
 	myTranslatef(0, 0, -10);
 	gluCylinder(quad, 8, 1, 10.0, 100, 100);
-
+	init_lamp_light();
 	glPopMatrix();
 }
 

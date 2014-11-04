@@ -64,14 +64,14 @@ void plane::drawplane()
 	glPushMatrix();
 	glColor3f(1,1,1);
 	myTranslatef(0,-20,0);
-	//myRotatef(90,1,0,0);
-
-	glBegin(GL_QUADS);
-		glTexCoord2f(1,0); glVertex3f(150,0,150);
-		glTexCoord2f(0,0); glVertex3f(150,0,-150);
-		glTexCoord2f(0,1); glVertex3f(-150,0,-150);
-		glTexCoord2f(1,1); glVertex3f(-150,0,150);
-	glEnd();
+	myRotatef(90,1,0,0);
+	glRectf(-150, -150, 150, 150);
+//	glBegin(GL_QUADS);
+//		glTexCoord2f(1,0); glVertex3f(150,0,150);
+//		glTexCoord2f(0,0); glVertex3f(150,0,-150);
+//		glTexCoord2f(0,1); glVertex3f(-150,0,-150);
+//		glTexCoord2f(1,1); glVertex3f(-150,0,150);
+//	glEnd();
 	glPopMatrix();
 
 }

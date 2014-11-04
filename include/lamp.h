@@ -22,6 +22,7 @@ public:
 	float support2Rotate;
 	float faceRotate[3];
 	lamp();
+	void init_lamp_light();
 	void drawlamp();
 	void animation();
 };

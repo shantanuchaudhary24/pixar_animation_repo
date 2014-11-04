@@ -44,7 +44,15 @@ void initRendering(){
     glLightfv(GL_LIGHT1, GL_SPECULAR, light_specular);
     glLightfv(GL_LIGHT1, GL_POSITION, light_position2);
 
-	glClearColor(0.7f, 0.9f, 1.0f, 1.0f);
+    glClearColor (0.0, 0.0, 0.0, 0.0);
+	glShadeModel(GL_FLAT);
+	glEnable(GL_DEPTH_TEST);
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
+    glClearColor(0.7f, 0.9f, 1.0f, 1.0f);
+
+    floor1.LoadTexture("textures/plank01.bmp");
+
 }
 
 void handleResize(int w, int h){
@@ -114,18 +122,25 @@ void drawScene(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_TEXTURE_2D);
+
 	glPushMatrix();
-	myTranslatef(0,0,-100);
-	glRotatef(angle_x, 1.0f, 0.0f, 0.0f);
-	glRotatef(angle_y, 0.0f, 1.0f, 0.0f);
-//	glColor3f(0.4,0.4,0.4);
-	floor1.drawplane("/home/shantanu/repositories/pixar_animation_repo/textures/plank01.bmp");
-	lamp1.drawlamp();
-	lamp1.animation();
-	ball1.drawball();
-	ball1.animation();
+
+		myTranslatef(0,0,-100);
+		glRotatef(angle_x, 1.0f, 0.0f, 0.0f);
+		glRotatef(angle_y, 0.0f, 1.0f, 0.0f);
+
+		lamp1.drawlamp();
+		lamp1.animation();
+		ball1.drawball();
+		ball1.animation();
+		floor1.drawplane();
+
 	glPopMatrix();
-	glEnd();
+
+	glDisable(GL_TEXTURE_2D);
 	glutSwapBuffers();
 }
 

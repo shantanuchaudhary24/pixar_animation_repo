@@ -14,14 +14,12 @@
 
 class plane
 {
-private:
-	ctexture planeTex;
-	GLuint texCode ;
 
 public:
-	plane();
-	void drawplane(const char *filename);
-	void load_texture();
+	//plane();
+	GLuint texture;
+	void drawplane();
+	GLuint LoadTexture(const char *filename);
 };
 
 #endif /* FLOOR_H_ */

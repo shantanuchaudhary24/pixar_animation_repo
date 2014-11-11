@@ -144,54 +144,13 @@ void drawScene()
 	glEnable(GL_TEXTURE_2D);
 
 	glPushMatrix();
-//	GLfloat light_ambient[] =
-//	{ 0.0, 0.0, 0.0, 1.0 };
-//	GLfloat light_diffuse[] =
-//	{ 1.0, 1.0, 1.0, 1.0 };
-//	GLfloat light_specular[] =
-//	{ 1.0, 1.0, 1.0, 1.0 };
-//
-//	GLfloat light_position[] =
-//		{ 0,0,0, 1.0f };
-//
-//	GLfloat spotlight_direction[] =
-//	{ 1, 1, 0 };
-//
-//	glLightfv(GL_LIGHT2, GL_AMBIENT, light_ambient);
-//	glLightfv(GL_LIGHT2, GL_DIFFUSE, light_diffuse);
-//	glLightfv(GL_LIGHT2, GL_SPECULAR, light_specular);
-//	glLightfv(GL_LIGHT2, GL_POSITION, light_position);
-//	glLightf(GL_LIGHT2, GL_SPOT_CUTOFF, 30.0);
-//	glLightf(GL_LIGHT2, GL_SPOT_EXPONENT, 1.0);
-//	glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, spotlight_direction);
-
-//	glEnable(GL_LIGHT2);
-//
 	myTranslatef(0, 0, -100);
 	glRotatef(angle_x, 1.0f, 0.0f, 0.0f);
 	glRotatef(angle_y, 0.0f, 1.0f, 0.0f);
-//	GLfloat light_ambient[] =
-//	{ 0.0, 0.0, 0.0, 1.0 };
-//	GLfloat light_diffuse[] =
-//	{ 1.0, 1.0, 1.0, 1.0 };
-//	GLfloat light_specular[] =
-//	{ 1.0, 1.0, 1.0, 1.0 };
-//
-//	GLfloat light_position[] =
-//	{ 0, 0, 0, 1.0f };
-//
-//	GLfloat spotlight_direction[] =
-//	{ 1, 1, 0 };
-//
-//	glLightfv(GL_LIGHT2, GL_AMBIENT, light_ambient);
-//	glLightfv(GL_LIGHT2, GL_DIFFUSE, light_diffuse);
-//	glLightfv(GL_LIGHT2, GL_SPECULAR, light_specular);
-//	glLightfv(GL_LIGHT2, GL_POSITION, light_position);
-//	glLightf(GL_LIGHT2, GL_SPOT_CUTOFF, 30.0);
-//	glLightf(GL_LIGHT2, GL_SPOT_EXPONENT, 1.0);
-//	glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, spotlight_direction);
-//	GLUquadric *quad = gluNewQuadric();
-//	gluCylinder(quad, 8, 1, 10.0, 100, 100);
+
+	GLfloat cyan[] = {0.f, .8f, .8f, 1.f};
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, cyan);
+
 	lamp1.drawlamp();
 	lamp1.animation();
 	ball1.drawball();

@@ -15,6 +15,7 @@ class ball
 {
 	public:
 	float moveball;
+	float rotateball;
 	struct timeval startTime, currentTime;
 	ball();
 	void drawball();

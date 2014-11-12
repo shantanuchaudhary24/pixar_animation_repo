@@ -148,9 +148,10 @@ void drawScene()
 	glRotatef(angle_x, 1.0f, 0.0f, 0.0f);
 	glRotatef(angle_y, 0.0f, 1.0f, 0.0f);
 
-	GLfloat cyan[] = {0.f, .8f, .8f, 1.f};
-	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, cyan);
-
+	GLfloat whiteSpecularMaterial[] = {1.0f, 1.0f, 1.0f};
+	GLfloat mShininess[] = {128};
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, whiteSpecularMaterial);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, mShininess);
 	lamp1.drawlamp();
 	lamp1.animation();
 	ball1.drawball();

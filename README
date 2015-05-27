@@ -4,17 +4,8 @@
 
 ################################################################################################
 
-This repository contains for software based simulation of ray tracing engine of OpenGL. The
-implementation has the following features:
--> Rendering of regular objects such as cubes, spheres etc.
--> Local illumination model with diffuse, specular and ambient components.
--> Global illumination with reflection, refraction and shadows.
--> Anti-aliasing using supersampling
--> Input specifications in the form of geometric properties of regular 3D objects
--> Input specification in the form of material properties of regular 3D objects
--> Provision for tweaking diffuse, specular, ambient light properties coefficients
--> Provision for handling multiple light sources.
--> Input specification for eye/camera in viewing coordinate system
+This repository contains code for a small animation clip based on Pixar's Lamp Junior animation
+See: https://www.youtube.com/watch?v=D4NPQ8mfKU0
 
 ################################################################################################
 

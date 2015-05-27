@@ -27,12 +27,6 @@ gdb:
 	mv *.o $(OBJDIR)
 	$(CXX) $(LINK) $(EXE) $(OBJECTS) $(LIBS)
 
-debug:	gdb
-	gdb $(DIR)$(EXE)
-
-push:
-	git push -u origin master
-
 cscope:
 	cscope -R -b
 
